@@ -1,0 +1,13 @@
+# eclipse service files
+/.buildpath
+/.project
+/.settings
+/web/.bowerrc
+# /
+/.idea
+#/.sass-cache
+
+node_modules
+/web/vendor/*
+build
+bin

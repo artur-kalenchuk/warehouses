@@ -1,0 +1,26 @@
+{
+  "name": "warehouses",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular": "1.5.8",
+    "angular-sanitize": "~1.5.8",
+    "angular-ui-router": "0.3.1",
+    "moment": "2.14.1",
+    "lodash": "4.15.0"
+  },
+  "dependencies": {
+    "angular-material": "1.1.1",
+    "angular-local-storage": "~0.5.0",
+    "angular-aria": "1.4.9",
+    "angular-messages": "~1.5.8",
+    "angular-material-data-table": "^0.10.9",
+    "angular-filter": "^0.5.8",
+    "angular-loading-bar": "^0.9.0",
+    "angular-ui-notification": "~0.2.0"
+  },
+  "resolutions": {
+    "angular": "1.5",
+    "angular-material": "1.1.1",
+    "moment": "2.14.1"
+  }
+}
