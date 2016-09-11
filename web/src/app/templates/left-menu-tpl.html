@@ -1,0 +1,28 @@
+<div layout="row" layout-align="center center">
+    <h3>Warehouses</h3>
+</div>
+<md-divider></md-divider>
+<ul class="xs-left-menu" layout="column" flex layout-align="start stretch">
+    <li>
+        <md-button ng-disabled="state.includes('app.warehouses')"
+                   ng-class="{'md-primary': true, 'md-raised': state.includes('app.warehouses')}"
+                   ui-sref="app.warehouses">
+            Warehouses
+        </md-button>
+    </li>
+    <li>
+        <md-button ng-disabled="state.includes('app.goodsType')"
+                   ng-class="{'md-primary': true, 'md-raised':  state.includes('app.goodsType')}"
+                   ui-sref="app.goodsType">
+            Goods types
+        </md-button>
+    </li>
+    <li>
+        <md-button ng-disabled="state.includes('app.transactions')"
+                   ng-class="{'md-primary': true, 'md-raised': state.includes('app.transactions')}"
+                   ui-sref="app.transactions">
+            Transactions
+        </md-button>
+    </li>
+</ul>
+

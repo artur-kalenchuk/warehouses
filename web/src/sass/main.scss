@@ -1,0 +1,15 @@
+/**
+ * This is the main stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet for SASS in
+ * the Gulp configuration that is automatically processed.
+ */
+
+
+// First, we include the Angular Material SASS lib file.
+@import '../../vendor/angular-material/angular-material.scss';
+
+
+// Warehouses custom styles
+
+@import 'warehouses.scss';
+

@@ -1,0 +1,50 @@
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+            <span>Warehouses manager</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-button" ng-click="addWarehouse($event)" aria-label="Add New Warehouses">
+            Add Warehouses
+        </md-button>
+        <md-button class="md-button" ng-click="addGood($event)" aria-label="Add New Warehouses">
+            Add Good
+        </md-button>
+    </div>
+</md-toolbar>
+<md-expansion-panel-group ng-if="warehouseList.length != 0" md-component-id="panelGroup" multiple>
+    <md-expansion-panel md-component-id="{{item.name}}" ng-repeat="item in warehouseList">
+        <md-expansion-panel-collapsed>
+            <div class="md-title">{{item.name}}</div>
+            <div class="md-summary">{{item.address}}</div>
+            <md-button ng-click="deleteWarehouse(item.name)">delete</md-button>
+            <md-button ng-click="deleteWarehouse(item.name)">edit</md-button>
+            <md-expansion-panel-icon></md-expansion-panel-icon>
+        </md-expansion-panel-collapsed>
+        <md-expansion-panel-expanded>
+            <md-expansion-panel-header>
+                <div class="md-title">{{item.name}}</div>
+                <div class="md-summary">{{item.name}}</div>
+                <md-expansion-panel-icon></md-expansion-panel-icon>
+            </md-expansion-panel-header>
+            <md-expansion-panel-content>
+                <div ng-repeat="item in goodsList">
+                    <h3>{{item.type}}</h3>
+                    <span flex></span>
+                    <p>{{item.amount}}</p>
+                </div>
+            </md-expansion-panel-content>
+            <md-expansion-panel-footer>
+                <div flex></div>
+                <md-button class="md-warn" ng-click="$panel.collapse()">Collapse</md-button>
+            </md-expansion-panel-footer>
+        </md-expansion-panel-expanded>
+    </md-expansion-panel>
+
+</md-expansion-panel-group>
+<div ng-if="warehouseList.length == 0" layout="row" layout-align="center center">
+    <h3>No warehouses yet.</h3>
+</div>

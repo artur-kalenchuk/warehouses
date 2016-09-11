@@ -16,7 +16,9 @@
     "angular-material-data-table": "^0.10.9",
     "angular-filter": "^0.5.8",
     "angular-loading-bar": "^0.9.0",
-    "angular-ui-notification": "~0.2.0"
+    "angular-ui-notification": "~0.2.0",
+    "angular-material-expansion-panel": "~0.6.1",
+    "material-design-icons": "3.0.1"
   },
   "resolutions": {
     "angular": "1.5",

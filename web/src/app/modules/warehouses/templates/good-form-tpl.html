@@ -1,0 +1,43 @@
+<md-dialog aria-label="New Warehouse">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Create New Warehouse</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content ng-cloak>
+        <form name="goodForm">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Good Type</label>
+                <md-select required ng-model="good.type" class="md-no-underline" required md-no-asterisk="false">
+                    <md-option ng-repeat="item in goodsTypeList" value="{{:: item.name }}">{{:: item.name }}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Warehouse</label>
+                <md-select required ng-model="good.w_name" class="md-no-underline" required md-no-asterisk="false">
+                    <md-option ng-repeat="item in warehouseList" value="{{:: item.name }}">{{:: item.name }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Amount</label>
+                <input required type="number" ng-model="good.amount">
+            </md-input-container>
+
+        </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+        <md-button ng-click="submit(good)">
+            Submit
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

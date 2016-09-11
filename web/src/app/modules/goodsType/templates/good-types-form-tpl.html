@@ -1,0 +1,30 @@
+<md-dialog aria-label="New Goods Type">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Create New Goods Type</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content ng-cloak>
+        <form name="goodsTypeForm">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Name</label>
+                <input required name="typeName" ng-model="goodsType.name">
+            </md-input-container>
+
+        </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+        <md-button ng-class="{'disabled': goodsTypeForm.typeName.$error}" ng-click="submit(goodsType)">
+            Submit
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
