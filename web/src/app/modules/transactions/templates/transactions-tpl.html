@@ -1,2 +1,33 @@
-<h1>transactions</h1>
-        <p>222</p>
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+            <span>Warehouses Transactions</span>
+        </h2>
+    </div>
+</md-toolbar>
+<md-table-container>
+    <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
+        <thead md-head>
+        <tr md-row>
+            <th md-column><span>Timestamp</span></th>
+            <th md-column><span>From Warehouse</span></th>
+            <th md-column>To Warehouse (g)</th>
+            <th md-column>Goods Type</th>
+            <th md-column md-numeric>Goods Amount</th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="transaction in transactionsList">
+            <td md-cell>{{transaction.timestamp}}</td>
+            <td md-cell>{{transaction.fromWarehouse}}</td>
+            <td md-cell>{{transaction.toWarehouse}}</td>
+            <td md-cell>{{transaction.goodType}}</td>
+            <td md-cell>{{transaction.amount}}</td>
+
+        </tr>
+        </tbody>
+    </table>
+</md-table-container>

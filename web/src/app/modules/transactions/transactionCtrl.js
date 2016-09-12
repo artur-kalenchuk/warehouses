@@ -1,9 +1,9 @@
 angular.module(
     'app.transactions'
 ).controller('TransactionCtrl', [
-    '$scope',
-    function ($scope) {
-        console.log($scope);
-
+    '$scope', 'localStorageService',
+    function ($scope, localStorageService) {
+        $scope.transactionsList = localStorageService.get('transactionsList');
     }
 ]);
+

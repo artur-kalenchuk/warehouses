@@ -4,10 +4,10 @@ angular.module(
     '$scope', '$state', 'localStorageService',
     function ($scope, $state, localStorageService) {
         $scope.state = $state;
-        localStorageService.set('warehouseList', []);
-        localStorageService.set('goodsTypeList', []);
-        localStorageService.set('goodsList', []);
-        localStorageService.set('transactionsList', []);
+        localStorageService.get('warehouseList') || localStorageService.set('warehouseList', []);
+        localStorageService.get('goodsTypeList') || localStorageService.set('goodsTypeList', []);
+        localStorageService.get('goodsList') || localStorageService.set('goodsList', []);
+        localStorageService.get('transactionsList') || localStorageService.set('transactionsList', []);
 
     }
 ]);

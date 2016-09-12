@@ -2,6 +2,7 @@ angular = require('angular');
 require('lodash/dist/lodash');
 require('angular-material');
 require('angular-material-expansion-panel/dist/md-expansion-panel');
+require('angular-material-data-table/dist/md-data-table');
 require('angular-ui-router/release/angular-ui-router');
 require('angular-local-storage/dist/angular-local-storage');
 require('../../build/templatesApp');
@@ -10,9 +11,11 @@ angular.module('app', [
     'ngMaterial',
     'material.components.expansionPanels',
     'ui.router',
+    'md.data.table',
     'LocalStorageModule',
     'appTemplates',
     //app modules
+    'app.common',
     'app.models',
     'app.warehouses',
     'app.transactions',
@@ -43,6 +46,7 @@ angular.module('app', [
 
 require('mainCtrl');
 
+require('common/main');
 require('models/main');
 require('modules/warehouses/main');
 require('modules/transactions/main');

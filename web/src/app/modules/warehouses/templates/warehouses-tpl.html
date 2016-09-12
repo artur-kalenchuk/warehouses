@@ -16,12 +16,13 @@
     </div>
 </md-toolbar>
 <md-expansion-panel-group ng-if="warehouseList.length != 0" md-component-id="panelGroup" multiple>
-    <md-expansion-panel md-component-id="{{item.name}}" ng-repeat="item in warehouseList">
+    <md-expansion-panel md-component-id="{{item.name}}" ng-repeat="item in warehouseList track by item.name">
         <md-expansion-panel-collapsed>
+            <p ng-bind="countAmount(wGoods)"></p>
             <div class="md-title">{{item.name}}</div>
             <div class="md-summary">{{item.address}}</div>
-            <md-button ng-click="deleteWarehouse(item.name)">delete</md-button>
-            <md-button ng-click="deleteWarehouse(item.name)">edit</md-button>
+            <md-button ng-disabled="wGoods.length > 0" ng-click="deleteWarehouse(item.name)">delete</md-button>
+            <md-button ng-click="editWarehouse(item.name)">edit</md-button>
             <md-expansion-panel-icon></md-expansion-panel-icon>
         </md-expansion-panel-collapsed>
         <md-expansion-panel-expanded>
@@ -31,10 +32,12 @@
                 <md-expansion-panel-icon></md-expansion-panel-icon>
             </md-expansion-panel-header>
             <md-expansion-panel-content>
-                <div ng-repeat="item in goodsList">
-                    <h3>{{item.type}}</h3>
+                <div ng-repeat="(key, goodItem) in goodsList | filter:{w_name:item.name} as wGoods">
+                    <h3>{{goodItem.type}}</h3>
                     <span flex></span>
-                    <p>{{item.amount}}</p>
+                    <p>{{goodItem.amount}}</p>
+                    <md-button ng-click="deleteGoods(goodItem)">delete</md-button>
+                    <md-button ng-click="transferGoods($event, goodItem)">Transfer</md-button>
                 </div>
             </md-expansion-panel-content>
             <md-expansion-panel-footer>

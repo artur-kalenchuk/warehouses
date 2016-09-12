@@ -156,7 +156,7 @@ gulp.task('build-js', [], function() {
 * Full build, applies cache busting to the main page css and js bundles
 * */
 
-gulp.task('build', [ 'clean', 'bower','build-css','build-template-cache', 'jshint', 'build-js'], function() {
+gulp.task('build', [ 'clean', 'build-css','build-template-cache', 'jshint', 'build-js'], function() {
     return gulp.src('src/index.html')
         .pipe(cachebust.references())
         .pipe(gulp.dest('build'));
