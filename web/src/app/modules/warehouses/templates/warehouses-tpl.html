@@ -1,16 +1,13 @@
 <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-button>
         <h2>
             <span>Warehouses manager</span>
         </h2>
         <span flex></span>
-        <md-button class="md-button" ng-click="addWarehouse($event)" aria-label="Add New Warehouses">
+        <md-button class="md-button" ng-click="warehouse.addWarehouse($event)" aria-label="Add New Warehouses">
             Add Warehouses
         </md-button>
-        <md-button class="md-button" ng-click="addGood($event)" aria-label="Add New Warehouses">
+        <md-button class="md-button" ng-click="warehouse.addGood($event)" aria-label="Add New Warehouses">
             Add Good
         </md-button>
     </div>
@@ -18,26 +15,26 @@
 <md-expansion-panel-group ng-if="warehouseList.length != 0" md-component-id="panelGroup" multiple>
     <md-expansion-panel md-component-id="{{item.name}}" ng-repeat="item in warehouseList track by item.name">
         <md-expansion-panel-collapsed>
-            <p ng-bind="countAmount(wGoods)"></p>
-            <div class="md-title">{{item.name}}</div>
+            <div class="md-title">{{item.name}}<span>({{warehouse.countAmount(wGoods)}})</span></div>
             <div class="md-summary">{{item.address}}</div>
-            <md-button ng-disabled="wGoods.length > 0" ng-click="deleteWarehouse(item.name)">Delete</md-button>
-            <md-button ng-click="editWarehouse($event, item)">Edit</md-button>
+            <md-button ng-disabled="wGoods.length > 0" ng-click="warehouse.deleteWarehouse(item.name)">Delete</md-button>
+            <md-button ng-click="warehouse.editWarehouse($event, item)">Edit</md-button>
             <md-expansion-panel-icon></md-expansion-panel-icon>
         </md-expansion-panel-collapsed>
         <md-expansion-panel-expanded>
             <md-expansion-panel-header>
                 <div class="md-title">{{item.name}}</div>
-                <div class="md-summary">{{item.name}}</div>
+                <div class="md-summary">{{item.address}}</div>
+                <md-button ng-disabled="wGoods.length > 0" ng-click="warehouse.deleteWarehouse(item.name)">Delete</md-button>
+                <md-button ng-click="warehouse.editWarehouse($event, item)">Edit</md-button>
                 <md-expansion-panel-icon></md-expansion-panel-icon>
             </md-expansion-panel-header>
             <md-expansion-panel-content>
                 <div ng-repeat="(key, goodItem) in goodsList | filter:{w_name:item.name} as wGoods">
-                    <h3>{{goodItem.type}}</h3>
+                    <h3>{{goodItem.type}}<span>({{goodItem.amount}})</span></h3>
                     <span flex></span>
-                    <p>{{goodItem.amount}}</p>
-                    <md-button ng-click="deleteGoods(goodItem)">Delete</md-button>
-                    <md-button ng-click="transferGoods($event, goodItem)">Transfer</md-button>
+                    <md-button ng-click="warehouse.deleteGoods(goodItem)">Delete</md-button>
+                    <md-button ng-click="warehouse.transferGoods($event, goodItem)">Transfer</md-button>
                 </div>
             </md-expansion-panel-content>
             <md-expansion-panel-footer>

@@ -11,7 +11,7 @@
 
     <md-dialog-content ng-cloak>
         <form name="goodForm">
-            <md-input-container class="md-block">
+            <md-input-container>
                 <label>Warehouse</label>
                 <md-select required ng-model="wName" class="md-no-underline" required md-no-asterisk="false">
                     <md-option ng-repeat="item in warehouseList" value="{{:: item.name }}">{{:: item.name }}</md-option>

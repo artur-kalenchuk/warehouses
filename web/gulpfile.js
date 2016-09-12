@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     del = require('del'),
     sass = require('gulp-sass'),
     KarmaServer = require('karma').Server,
-    jshint = require('gulp-jshint'),
+    //jshint = require('gulp-jshint'),
     sourcemaps = require('gulp-sourcemaps'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
@@ -105,24 +105,12 @@ gulp.task('jshint', function() {
 */
 
  gulp.task('test', ['build-js'], function() {
-    var testFiles = buildConfig.app_files.jsunit;
 //
      new KarmaServer({
          configFile: __dirname + '/karma.conf.js',
          singleRun: true
      }).start();
 
-
-//    return gulp.src(testFiles)
-//        .pipe(new KarmaServer({
-//            configFile: '..karma.conf.js',
-//            singleRun: true,
-//            action: 'run'
-//        }))
-//        .on('error', function(err) {
-//            console.log('karma tests failed: ' + err);
-//            throw err;
-//        });
 });
 
 
@@ -156,7 +144,7 @@ gulp.task('build-js', [], function() {
 * Full build, applies cache busting to the main page css and js bundles
 * */
 
-gulp.task('build', [ 'clean', 'build-css','build-template-cache', 'jshint', 'build-js'], function() {
+gulp.task('build', [ 'clean', 'build-css','build-template-cache'], function() {
     return gulp.src('src/index.html')
         .pipe(cachebust.references())
         .pipe(gulp.dest('build'));
@@ -180,7 +168,7 @@ gulp.task('build', [ 'clean', 'build-css','build-template-cache', 'jshint', 'bui
 * Launches a web server that serves files in the current directory
 * */
 
-gulp.task('webserver', ['build'], function() {
+gulp.task('webserver', [], function() {
     gulp.src('.')
         .pipe(webserver({
             livereload: false,

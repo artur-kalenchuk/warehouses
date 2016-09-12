@@ -1,4 +1,4 @@
-angular = require('angular');
+require('angular');
 require('lodash/dist/lodash');
 require('angular-material');
 require('angular-material-expansion-panel/dist/md-expansion-panel');
@@ -16,7 +16,6 @@ angular.module('app', [
     'appTemplates',
     //app modules
     'app.common',
-    'app.models',
     'app.warehouses',
     'app.transactions',
     'app.goodsType'
@@ -47,7 +46,6 @@ angular.module('app', [
 require('mainCtrl');
 
 require('common/main');
-require('models/main');
 require('modules/warehouses/main');
 require('modules/transactions/main');
 require('modules/goodsType/main');

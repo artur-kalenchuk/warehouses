@@ -2,14 +2,14 @@ angular.module(
     'app.warehouses'
 ).controller('WarehouseCtrl', [
     '$scope', '$mdDialog', 'localStorageService',
-($scope, $mdDialog, localStorageService) => {
+function($scope, $mdDialog, localStorageService) {
 
     localStorageService.bind($scope, 'warehouseList');
     localStorageService.bind($scope, 'goodsList');
     localStorageService.bind($scope, 'transactionsList');
     $scope.goodsTypeList = localStorageService.get('goodsTypeList');
 
-    $scope.addWarehouse = (ev) => {
+    this.addWarehouse = (ev) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', WarehouseDialogCtrl],
             templateUrl: 'modules/warehouses/templates/warehouse-form-tpl.html',
@@ -21,7 +21,7 @@ angular.module(
         });
     };
 
-    $scope.addGood = (ev) => {
+    this.addGood = (ev) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', 'warehouseList', 'goodsTypeList', GoodDialogCtrl],
             templateUrl: 'modules/warehouses/templates/good-form-tpl.html',
@@ -52,8 +52,12 @@ angular.module(
             });
         });
     };
+    /*
+    * @TODO: Move to service
+    * */
+    this.editWarehouse = (ev, wItem) => {
+        ev.cancelBubble = true;
 
-    $scope.editWarehouse = (ev, wItem) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', 'warehouse', WarehouseDialogCtrl],
             templateUrl: 'modules/warehouses/templates/warehouse-form-tpl.html',
@@ -75,14 +79,14 @@ angular.module(
         });
     };
 
-    $scope.deleteWarehouse = (wName) => {
+    this.deleteWarehouse = (wName) => {
         let index = $scope.warehouseList.findIndex((item) => {
             return item.name === wName;
         });
         $scope.warehouseList.splice(index, 1);
     };
 
-    $scope.deleteGoods = (goodItem) => {
+    this.deleteGoods = (goodItem) => {
         let index = $scope.goodsList.findIndex((item) => {
             return (item.type === goodItem.type && item.w_name === goodItem.w_name);
         });
@@ -96,7 +100,7 @@ angular.module(
         $scope.goodsList.splice(index, 1);
     };
 
-    $scope.transferGoods = (ev, goodItem) => {
+    this.transferGoods = (ev, goodItem) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', 'warehouseList', TransferGoodDialogCtrl],
             templateUrl: 'modules/warehouses/templates/good-transfer-form-tpl.html',
@@ -131,7 +135,7 @@ angular.module(
         });
     };
 
-    $scope.countAmount = (arr) => {
+    this.countAmount = (arr) => {
         if(!arr || arr.length === 0) {
             return 0;
         } else if(arr.length === 1){
@@ -142,8 +146,6 @@ angular.module(
             return prev.amount + current.amount;
         });
     };
-
-
 
 // private functions
     function WarehouseDialogCtrl($scope, $mdDialog, warehouse) {

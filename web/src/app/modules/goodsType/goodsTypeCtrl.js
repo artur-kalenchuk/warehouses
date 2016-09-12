@@ -2,11 +2,11 @@ angular.module(
     'app.goodsType'
 ).controller('GoodsTypeCtrl', [
     '$scope', '$mdDialog', 'localStorageService',
-($scope, $mdDialog, localStorageService) => {
+function($scope, $mdDialog, localStorageService) {
 
     localStorageService.bind($scope, 'goodsTypeList');
     localStorageService.bind($scope, 'goodsList');
-    $scope.addGoodsType = (ev) => {
+    this.addGoodsType = (ev) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', GoodsTypeDialogCtrl],
             templateUrl: 'modules/goodsType/templates/good-types-form-tpl.html',
@@ -18,7 +18,7 @@ angular.module(
         });
     };
 
-    $scope.editType = (ev, typeItem) => {
+    this.editType = (ev, typeItem) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', 'goodsType', GoodsTypeDialogCtrl],
             templateUrl: 'modules/goodsType/templates/good-types-form-tpl.html',

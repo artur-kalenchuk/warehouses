@@ -4,7 +4,7 @@
   "description": "warehouses",
   "scripts": {
     "test": "gulp test",
-    "start": "gulp webserver"
+    "start": "gulp build; gulp build-js; gulp webserver"
   },
   "repository": {
     "type": "git",

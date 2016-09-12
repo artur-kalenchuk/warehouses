@@ -11,14 +11,14 @@
 
     <md-dialog-content ng-cloak>
         <form name="goodForm">
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container flex-gt-sm>
                 <label>Good Type</label>
                 <md-select required ng-model="good.type" class="md-no-underline" required md-no-asterisk="false">
                     <md-option ng-repeat="item in goodsTypeList" value="{{:: item.name }}">{{:: item.name }}</md-option>
                 </md-select>
             </md-input-container>
 
-            <md-input-container class="md-block">
+            <md-input-container >
                 <label>Warehouse</label>
                 <md-select required ng-model="good.w_name" class="md-no-underline" required md-no-asterisk="false">
                     <md-option ng-repeat="item in warehouseList" value="{{:: item.name }}">{{:: item.name }}</md-option>
