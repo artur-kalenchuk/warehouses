@@ -21,8 +21,8 @@
             <p ng-bind="countAmount(wGoods)"></p>
             <div class="md-title">{{item.name}}</div>
             <div class="md-summary">{{item.address}}</div>
-            <md-button ng-disabled="wGoods.length > 0" ng-click="deleteWarehouse(item.name)">delete</md-button>
-            <md-button ng-click="editWarehouse(item.name)">edit</md-button>
+            <md-button ng-disabled="wGoods.length > 0" ng-click="deleteWarehouse(item.name)">Delete</md-button>
+            <md-button ng-click="editWarehouse($event, item)">Edit</md-button>
             <md-expansion-panel-icon></md-expansion-panel-icon>
         </md-expansion-panel-collapsed>
         <md-expansion-panel-expanded>
@@ -36,7 +36,7 @@
                     <h3>{{goodItem.type}}</h3>
                     <span flex></span>
                     <p>{{goodItem.amount}}</p>
-                    <md-button ng-click="deleteGoods(goodItem)">delete</md-button>
+                    <md-button ng-click="deleteGoods(goodItem)">Delete</md-button>
                     <md-button ng-click="transferGoods($event, goodItem)">Transfer</md-button>
                 </div>
             </md-expansion-panel-content>

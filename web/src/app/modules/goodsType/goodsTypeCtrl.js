@@ -5,6 +5,7 @@ angular.module(
 ($scope, $mdDialog, localStorageService) => {
 
     localStorageService.bind($scope, 'goodsTypeList');
+    localStorageService.bind($scope, 'goodsList');
     $scope.addGoodsType = (ev) => {
         $mdDialog.show({
             controller: ['$scope', '$mdDialog', GoodsTypeDialogCtrl],
@@ -17,8 +18,33 @@ angular.module(
         });
     };
 
+    $scope.editType = (ev, typeItem) => {
+        $mdDialog.show({
+            controller: ['$scope', '$mdDialog', 'goodsType', GoodsTypeDialogCtrl],
+            templateUrl: 'modules/goodsType/templates/good-types-form-tpl.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            locals: {
+                goodsType: typeItem
+            }
+        }).then((newType) => {
+            $scope.goodsList.forEach((item) => {
+                if(item.type === typeItem.name){
+                    item.type = newType.name;
+                }
+            });
+
+            typeItem.name = newType.name;
+        });
+    };
+
     // private functions
-    function GoodsTypeDialogCtrl($scope, $mdDialog) {
+    function GoodsTypeDialogCtrl($scope, $mdDialog, goodsType) {
+        if(goodsType){
+            $scope.goodsType = angular.copy(goodsType);
+        }
+
         $scope.hide = () => {
             $mdDialog.hide();
         };

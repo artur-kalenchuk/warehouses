@@ -13,7 +13,7 @@
         <form name="goodsTypeForm">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Name</label>
-                <input required name="typeName" ng-model="goodsType.name">
+                <input required ng-pattern="/^[a-zA-Z ]{1,25}$/" name="typeName" ng-model="goodsType.name">
             </md-input-container>
 
         </form>
@@ -23,7 +23,7 @@
         <md-button ng-click="cancel()">
             Cancel
         </md-button>
-        <md-button ng-class="{'disabled': goodsTypeForm.typeName.$error}" ng-click="submit(goodsType)">
+        <md-button ng-disabled="goodsTypeForm.$invalid" ng-click="submit(goodsType)">
             Submit
         </md-button>
     </md-dialog-actions>

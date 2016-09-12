@@ -16,6 +16,7 @@
     <md-list-item class="md-3-line" ng-repeat="item in goodsTypeList">
         <div class="md-list-item-text" layout="column">
             <h3>{{ item.name }}</h3>
+            <md-button ng-click="editType($event, item)">Edit</md-button>
         </div>
         <md-divider ></md-divider>
     </md-list-item>

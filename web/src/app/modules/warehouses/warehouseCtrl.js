@@ -53,6 +53,28 @@ angular.module(
         });
     };
 
+    $scope.editWarehouse = (ev, wItem) => {
+        $mdDialog.show({
+            controller: ['$scope', '$mdDialog', 'warehouse', WarehouseDialogCtrl],
+            templateUrl: 'modules/warehouses/templates/warehouse-form-tpl.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            locals: {
+                warehouse: wItem
+            }
+        }).then((newWarehouse) => {
+            $scope.goodsList.forEach((item) => {
+                if(item.w_name === wItem.name){
+                    item.w_name = newWarehouse.name;
+                }
+            });
+
+            wItem.name = newWarehouse.name;
+            wItem.address = newWarehouse.address;
+        });
+    };
+
     $scope.deleteWarehouse = (wName) => {
         let index = $scope.warehouseList.findIndex((item) => {
             return item.name === wName;
@@ -124,7 +146,10 @@ angular.module(
 
 
 // private functions
-    function WarehouseDialogCtrl($scope, $mdDialog) {
+    function WarehouseDialogCtrl($scope, $mdDialog, warehouse) {
+        if(warehouse){
+            $scope.warehouse = angular.copy(warehouse);
+        }
         $scope.hide = () => {
             $mdDialog.hide();
         };

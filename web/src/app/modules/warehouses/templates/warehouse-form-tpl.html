@@ -10,7 +10,7 @@
     </md-toolbar>
 
     <md-dialog-content ng-cloak>
-        <form name="userForm">
+        <form name="warehouseForm">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Name</label>
                 <input required ng-model="warehouse.name">
@@ -28,7 +28,7 @@
         <md-button ng-click="cancel()">
             Cancel
         </md-button>
-        <md-button ng-click="submit(warehouse)">
+        <md-button ng-disabled="warehouseForm.$invalid" ng-click="submit(warehouse)">
             Submit
         </md-button>
     </md-dialog-actions>

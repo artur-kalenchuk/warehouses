@@ -36,7 +36,7 @@
         <md-button ng-click="cancel()">
             Cancel
         </md-button>
-        <md-button ng-click="submit(good)">
+        <md-button ng-disabled="goodForm.$invalid" ng-click="submit(good)">
             Submit
         </md-button>
     </md-dialog-actions>

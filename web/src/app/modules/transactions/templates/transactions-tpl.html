@@ -8,11 +8,12 @@
         </h2>
     </div>
 </md-toolbar>
+<input ng-model="filterTransaction">
 <md-table-container>
     <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
-        <thead md-head>
+        <thead md-head md-order="timeOrder">
         <tr md-row>
-            <th md-column><span>Timestamp</span></th>
+            <th md-column md-order-by="timestamp"><span>Timestamp</span></th>
             <th md-column><span>From Warehouse</span></th>
             <th md-column>To Warehouse (g)</th>
             <th md-column>Goods Type</th>
@@ -20,7 +21,8 @@
         </tr>
         </thead>
         <tbody md-body>
-        <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="transaction in transactionsList">
+        <tr md-row md-select="dessert" md-select-id="name" md-auto-select
+            ng-repeat="transaction in transactionsList | orderBy: timeOrder | filter:{toWarehouse:filterTransaction} as filterResult track by transaction.timestamp">
             <td md-cell>{{transaction.timestamp}}</td>
             <td md-cell>{{transaction.fromWarehouse}}</td>
             <td md-cell>{{transaction.toWarehouse}}</td>
@@ -31,3 +33,4 @@
         </tbody>
     </table>
 </md-table-container>
+    
